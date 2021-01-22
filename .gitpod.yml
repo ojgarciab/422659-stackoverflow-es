@@ -5,6 +5,8 @@ ports:
 - port: 3306
   onOpen: ignore
 tasks:
+- name: Esquema
+  init: mysql < esquema.sql
 - name: Apache
   command: >
     while [ ! -f /tmp/terminado ] ; do sleep 1; done ; apachectl start &&
