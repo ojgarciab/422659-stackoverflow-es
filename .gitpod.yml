@@ -1,0 +1,30 @@
+image: gitpod/workspace-mysql
+ports:
+- port: 8001
+  onOpen: open-preview
+- port: 3306
+  onOpen: ignore
+tasks:
+- name: Apache
+  command: >
+    while [ ! -f /tmp/terminado ] ; do sleep 1; done ; apachectl start &&
+    multitail /var/log/apache2/access.log -I /var/log/apache2/error.log
+- name: Terminal
+  init: >
+    composer install;
+    curl 'https://files.phpmyadmin.net/phpMyAdmin/5.0.1/phpMyAdmin-5.0.1-all-languages.zip' > phpMyAdmin-5.0.1-all-languages.zip ;
+    unzip phpMyAdmin-5.0.1-all-languages.zip -d public ;
+    rm -f phpMyAdmin-5.0.1-all-languages.zip ;
+    mv public/phpMyAdmin-5.0.1-all-languages/ public/phpmyadmin ;
+    cp public/phpmyadmin/config.sample.inc.php public/phpmyadmin/config.inc.php ;
+    sed -ri 's/(AllowNoPassword.*)false(;)/\1true\2/i' public/phpmyadmin/config.inc.php ;
+    sed -ri "s/(blowfish_secret.*')(';)/\1$(< /dev/urandom tr -cd 'A-Za-z_\-=.0-9' 2> /dev/null | head -c 32)\2/i" public/phpmyadmin/config.inc.php ;
+    touch /tmp/terminado
+  command: >
+    clear;
+    echo "";
+    echo "Cosas que puedes hacer en este terminal:";
+    echo " * apachectl stop";
+    echo " * apachectl start";
+    echo " * gp open /var/log/apache2/access.log";
+    echo " * gp open /var/log/apache2/error.log";
