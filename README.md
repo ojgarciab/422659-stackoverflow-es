@@ -1,8 +1,4 @@
-# Datos de la plantilla [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/ojgarciab/plantilla-gitpod-apache2-php-mysql)
+# Probar en línea [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/ojgarciab/422659-stackoverflow-es)
 
-En esta plantilla disponemos de:
-
-* Documento de plantilla HTML 5 + Bootstrap 4.1.3 + jQuery 3.3.1.
-* Archivo `composer.json` vacío, listo para ser usado.
-* Servidor Apache2 con PHP activo.
-* Servidor MySQL con gestión mediante phpMyAdmin.
+Pregunta en stackoverflow:
+* https://es.stackoverflow.com/questions/422659/resultados-en-blanco-en-una-consulta-con-rango-de-fechas-usando-pdo-mysql
